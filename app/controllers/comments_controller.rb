@@ -8,8 +8,8 @@ class CommentsController < ApplicationController
   end
 
   def destroy
-    @comment = Comment.find_by(tweet_id: params[:tweet_id], user_id: current_user.id)
-    @comment.destroy
+    Comment.find(params[:id]).destroy
+  
   end
   
   private
