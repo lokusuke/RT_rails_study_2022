@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
-  get 'comments/new'
-  get 'comments/create'
-  get 'comments/destroy'
+  #get 'comments/new'
+  #get 'comments/create'
+  #get 'comments/destroy'
   #get 'favorites/create'
   #get 'favorites/destroy'
   root 'tweets#index'
@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   devise_for :users
   resources :tweets do
     resource :favorites, only: [:create, :destroy]
+    resource :comments, only: [:new, :create, :destroy]
   end  
   
   resources :users
