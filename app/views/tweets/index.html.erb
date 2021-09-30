@@ -12,6 +12,9 @@
     <% else %>
         <p><span>お気に入り登録: </span><%=link_to tweet.favorites.count, tweet_favorites_path(tweet.id), method: :post %></p>
     <% end %>
+    
+    <p><span>コメント数: </span><%=link_to tweet.comments.count %>　<%=link_to "コメント入力", tweet_comments_path(tweet.id) %></p>
+    
   <% else %>
     <p><span>お気に入り数: </span><%= tweet.favorites.count %></p>
   <% end %>
