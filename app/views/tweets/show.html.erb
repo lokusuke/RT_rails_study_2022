@@ -1,2 +1,20 @@
 <h1>Tweets#show</h1>
 <p>Find me in app/views/tweets/show.html.erb</p>
+
+<p><span>email: </span><%= @user.email %></p>
+<p><span>ツイート内容: </span><%= @tweet.body %></p>
+
+<% @comments.each do |comment| %>
+  <hr>
+  <p><span>コメント内容: </span><%= comment.body %> </p>
+  <p><%=link_to "コメント削除", tweet_comment_path(comment.tweet.id, comment.id ), method: :delete %></p>
+<% end %>
+
+
+<%= form_for ([@tweet, @comment]) do |f| %>
+  <p>
+    <%= f.label :body,"コメント" %>
+    <%= f.text_field :body %>
+  </p>
+  <%= f.submit %>
+<% end %>
