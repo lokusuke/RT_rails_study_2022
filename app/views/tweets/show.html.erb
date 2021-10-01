@@ -6,8 +6,8 @@
 
 <% @comments.each do |comment| %>
   <hr>
-  <p><span>コメント内容: </span><%=link_to comment.body %> </p>
-  <p><%=link_to "削除", tweet_comment_path(comment.id), method: :delete %></p>
+  <p><span>コメント内容: </span><%= comment.body %> </p>
+  <p><%=link_to "コメント削除", tweet_comment_path(comment.tweet.id, comment.id ), method: :delete %></p>
 <% end %>
 
 
