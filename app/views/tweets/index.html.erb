@@ -15,6 +15,14 @@
     
     <p><%=link_to "コメント入力", tweet_path(tweet.id) %></p>
     
+    <% if current_user !=  tweet.user %>
+        <% if tweet.user.followed_by?(current_user) %>
+            <p><%=link_to "フォロー解除", user_relationships_path(tweet.user.id), method: :delete %></p>
+        <% else %>
+            <p><%=link_to "フォローする", user_relationships_path(tweet.user.id), method: :post %></p>
+        <% end %>
+    <% end %>
+    
   <% else %>
     <p><span>お気に入り数: </span><%= tweet.favorites.count %>
   <% end %>

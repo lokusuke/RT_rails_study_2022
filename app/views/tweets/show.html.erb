@@ -4,6 +4,16 @@
 <p><span>email: </span><%= @user.email %></p>
 <p><span>ツイート内容: </span><%= @tweet.body %></p>
 
+ 
+<% if current_user != @user %>
+    <% if @user.followed_by?(current_user) %>
+        <p><%=link_to "フォロー解除", user_relationships_path(current_user) %></p>
+    <% else %>
+        <p><%=link_to "フォローする", user_relationships_path(current_user) %></p>
+    <% end %>
+<% end%>
+
+
 <% @comments.each do |comment| %>
   <hr>
   <p><span>コメント内容: </span><%= comment.body %> </p>

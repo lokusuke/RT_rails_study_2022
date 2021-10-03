@@ -21,7 +21,7 @@ class User < ApplicationRecord
   has_many :followers, through: :passive_relationships, source: :following
   
   def followed_by?(user)
-    passive_relationships.find_by(following_id: current_user.id).present?
+    passive_relationships.find_by(following_id: user.id).present?
     #presentは条件に一致するレコードを全て取得する動作
     #existは条件に一致するレコードを最初の1件のみ取得する動作
   end
