@@ -10,6 +10,7 @@
             <p><%=link_to "フォロー解除", user_relationships_path(user.id), method: :delete %></p>
         <% else %>
             <p><%=link_to "フォローする", user_relationships_path(user.id), method: :post %></p>
+        <% end %>
     <% end %>
   
 <% end %>
